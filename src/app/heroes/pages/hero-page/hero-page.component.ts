@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { switchMap } from 'rxjs';
 
 import { HerosService } from '../../services/heros.service';
+
 import { Hero } from '../../interfaces/hero.interface';
 
 @Component({

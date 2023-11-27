@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Hero } from '../../interfaces/hero.interface';
-import { HerosService } from '../../services/heros.service';
+
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+
+import { HerosService } from '../../services/heros.service';
+
+import { Hero } from '../../interfaces/hero.interface';
 
 @Component({
   selector: 'app-search-page',
