@@ -18,8 +18,8 @@
                 <mat-option
                     *ngIf="heroes.length === 0 && searchInput.value && searchInput.value.length > 0" 
                     value=""
-                    class="text-danger">
-                    No se encontró nada con el término {{ searchInput.value }}
+                    class="text-danger no-pointers">
+                    No se encontró nada con el término <span class="fw-700">{{ searchInput.value }}</span>
                 </mat-option>
             </mat-autocomplete>
     </mat-form-field>

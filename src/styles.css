@@ -26,3 +26,9 @@ li {
 .text-danger span {
     color: red;
 }
+.fw-700 {
+    font-weight: 700;
+}
+.no-pointers {
+    pointer-events: none;
+}
