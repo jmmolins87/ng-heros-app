@@ -9,11 +9,17 @@ import {
 } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 
-import { switchMap } from 'rxjs';
+import { 
+  filter, 
+  switchMap, 
+  tap 
+} from 'rxjs';
 
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 
 import { HerosService } from '../../services/heros.service';
+
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 
 @Component({
@@ -88,6 +94,20 @@ export class NewPageComponent implements OnInit {
 
   onDeleteHero() {
     if( !this.currentHero.id ) throw Error( 'Hero id is required' );
+
+    const dialogRef = this.dialog.open( ConfirmDialogComponent, {
+      data: this.heroForm.value
+    });
+
+    dialogRef.afterClosed()
+    .pipe(
+      filter(( result: boolean ) => result ),
+      switchMap(() =>  this._heroesService.deleteHeroById( this.currentHero.id )),
+      filter(( wasDeleted: boolean ) => wasDeleted )
+    )
+    .subscribe( result => {
+      this.router.navigate(['/heroes']);
+    })
   }
 
   showSnackBar( message: string ): void {
